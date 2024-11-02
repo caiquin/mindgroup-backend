@@ -16,7 +16,7 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
 
 export const createUser = async (user: User): Promise<void> => {
   try {
-    console.log('Criando usuário com os dados:', user); // Log dos dados do usuário
+    console.log('Criando usuário com os dados:', user); 
 
     const hashedPassword = await bcrypt.hash(user.password, 10);
     await db.query(
@@ -24,9 +24,9 @@ export const createUser = async (user: User): Promise<void> => {
       [user.name, user.email, hashedPassword]
     );
 
-    console.log('Usuário criado com sucesso'); // Confirmação de criação
+    console.log('Usuário criado com sucesso');
   } catch (error) {
-    console.error('Erro no modelo ao criar usuário:', error); // Log de erro detalhado
-    throw error; // Lançar o erro para ser capturado no controlador
+    console.error('Erro no modelo ao criar usuário:', error); 
+    throw error;
   }
 };
